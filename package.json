@@ -1,0 +1,29 @@
+{
+  "name": "sunnyadapter",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "sunnyadapter": "./bin/sunnyadapter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikabytes/sunnyadapter.git"
+  },
+  "author": "Mikabytes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikabytes/sunnyadapter/issues"
+  },
+  "homepage": "https://github.com/mikabytes/sunnyadapter#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "puppeteer": "^24.4.0"
+  },
+  "type": "module"
+}
