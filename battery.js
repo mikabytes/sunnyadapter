@@ -2,22 +2,28 @@ import puppeteer from "puppeteer"
 
 export async function setTimeWindow(plant, schedule) {
   const browser = await puppeteer.launch({
-    headless: `new`,
+    headless: false,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   })
 
   let page
   try {
     page = await browser.newPage()
+
+    await page.evaluateOnNewDocument(() => {
+      Object.defineProperty(navigator, "webdriver", { get: () => false })
+    })
+
     await page.goto(`https://sunnyportal.com`)
 
     await page.waitForSelector(`#onetrust-reject-all-handler`)
     await page.click(`#onetrust-reject-all-handler`)
     await delay(3000) // stupid animation thing
 
-    const loginButton = `#ctl00_ContentPlaceHolder1_Logincontrol1_SmaIdLoginButton`
-    await page.waitForSelector(loginButton)
-    await page.click(loginButton)
+    const firstLoginButton = `#ctl00_ContentPlaceHolder1_Logincontrol1_SmaIdLoginButton`
+    await page.waitForSelector(firstLoginButton)
+    await page.click(firstLoginButton)
+    await page.waitForSelector(`#username`)
 
     const usernameField = `#username`
     await page.waitForSelector(usernameField)
@@ -28,7 +34,12 @@ export async function setTimeWindow(plant, schedule) {
     await page.click(passwordField)
     await page.keyboard.type(process.env.PASSWORD)
 
-    await page.click(`button[name="login"]`)
+    await delay(500)
+    await page.evaluate(() => {
+      const form = document.querySelector('form[name="loginForm"]')
+      const loginButton = form?.querySelector('button[name="login"]')
+      loginButton?.click() // triggers full native JS flow including `onsubmit`
+    })
     await page.waitForSelector(`#DataTables_Table_0`)
 
     const plants = await page.evaluate(async () => {
@@ -121,6 +132,11 @@ export async function setTimeWindow(plant, schedule) {
     }
 
     console.log(`We're done!!!`)
+  } catch (e) {
+    if (!page.isClosed()) {
+      await page.screenshot({ path: "page.png", fullPage: true })
+    }
+    throw e
   } finally {
     try {
       if (!page.isClosed()) {

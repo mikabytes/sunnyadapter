@@ -10,11 +10,11 @@ You can run this as a NPM package or as Docker.
 
 ```
 npm install -g sunnyadapter
-PORT=3000 USER=myuser PASSWORD=mypassword sunnyadapter
+AUTH=apiAccessPassword PORT=3000 USER=myUser PASSWORD=myPassword sunnyadapter
 ```
 
 ```
-docker run -it ghcr.io/mikabytes/sunnyadapter -e USER=myuser -e PASSWORD=mypassword -p 3000:3000
+docker run -it ghcr.io/mikabytes/sunnyadapter -e AUTH=apiAccessPassword -e USER=myUser -e PASSWORD=myPassword -p 3000:3000
 ```
 
 Then, a service will run on the chosen port.
@@ -56,11 +56,11 @@ Where objects should be formatted as following:
 **Setting a schedule with three periods**
 
 ```
-curl -X PUT http://localhost:3000/plants/granstugan/battery/time-window -H 'Content-Type: application/json' -d '[{ "start": "11:00", "stop": "12:00", "power": 20 }, { "start": "13:00", "stop": "+5h", "power": "21"}, {"start":"19:00", "stop":"00:00", "power": 22 }]'
+curl -X PUT http://localhost:3000/plants/granstugan/battery/time-window -H 'Authorization: Bearer apiAccessPassword' -H 'Content-Type: application/json' -d '[{ "start": "11:00", "stop": "12:00", "power": 20 }, { "start": "13:00", "stop": "+5h", "power": "21"}, {"start":"19:00", "stop":"00:00", "power": 22 }]'
 ```
 
 **Removing a schedule**
 
 ```
-curl -X PUT http://localhost:3000/plants/granstugan/battery/time-window -H 'Content-Type: application/json' -d '[]'
+curl -X PUT http://localhost:3000/plants/granstugan/battery/time-window -H 'Authorization: Bearer apiAccessPassword' -H 'Content-Type: application/json' -d '[]'
 ```

@@ -1,6 +1,7 @@
 FROM node:23.6.0
 
 RUN apt-get update && apt-get install -y \
+    wget \
     ca-certificates \
     fonts-liberation \
     libappindicator3-1 \
@@ -17,12 +18,9 @@ RUN apt-get update && apt-get install -y \
     libxdamage1 \
     libxrandr2 \
     xdg-utils \
-    wget \
-    libgbm1 \
-    libxshmfence1 \
-    libgtk-3-0 \
-    --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+    libu2f-udev \
+    xvfb \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY ./index.js /app/
 COPY ./battery.js /app/
@@ -33,4 +31,4 @@ WORKDIR /app
 
 RUN npm i
 
-CMD node index.js
+CMD xvfb-run --auto-servernum --server-args='-screen 0 1280x800x24' node index.js

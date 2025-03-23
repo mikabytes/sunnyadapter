@@ -15,6 +15,25 @@ if (!process.env.PASSWORD) {
   throw new Error(`No PASSWORD env variable`)
 }
 
+if (!process.env.AUTH) {
+  throw new Error(`No AUTH env variable`)
+}
+
+app.use((req, res, next) => {
+  const authHeader = req.headers["authorization"]
+
+  if (authHeader && authHeader.startsWith("Bearer ")) {
+    const token = authHeader.split(" ")[1]
+    if (token === process.env.AUTH) {
+      next()
+      return
+    }
+  }
+  return res
+    .status(401)
+    .json({ message: "Missing or invalid authorization header" })
+})
+
 app.use(bodyParser.json())
 
 app.put(`/plants/:plant/battery/time-window`, async (req, res) => {
