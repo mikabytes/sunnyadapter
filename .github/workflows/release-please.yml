@@ -1,2 +1,0 @@
-- name: release-please-action
-  uses: googleapis/release-please-action@v4.2.0
