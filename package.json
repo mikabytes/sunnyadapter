@@ -1,10 +1,11 @@
 {
   "name": "sunnyadapter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "commit-and-tag-version"
   },
   "bin": {
     "sunnyadapter": "./bin/sunnyadapter"
@@ -25,5 +26,8 @@
     "express": "^4.21.2",
     "puppeteer": "^24.4.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "commit-and-tag-version": "^12.5.0"
+  }
 }
