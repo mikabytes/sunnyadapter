@@ -8,7 +8,7 @@
     "release": "commit-and-tag-version"
   },
   "bin": {
-    "sunnyadapter": "./bin/sunnyadapter"
+    "sunnyadapter": "bin/sunnyadapter"
   },
   "repository": {
     "type": "git",
