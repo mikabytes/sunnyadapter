@@ -26,7 +26,7 @@ As of now there is a single endpoint:
 ```
 PUT /plants/:plant/battery/time-window
 
-[{"start": STARTSTR, "stop": STOPSTR, "power": INT}, {...}, {...}]
+[{"start": STARTSTR, "stop": STOPSTR, "power": WATTAGE}, {...}, {...}]
 ```
 
 Where `:plant` should be replaced with the value of the first column in this table [https://sunnyportal.com/Plants](https://sunnyportal.com/Plants)
@@ -36,8 +36,8 @@ Where objects should be formatted as following:
 | type       | description                                                                                 | examples                               |
 | ---------- | ------------------------------------------------------------------------------------------- | -------------------------------------- |
 | `STARTSTR` | 24-hour formatted time                                                                      | `00:00` `05:30` `5:30` `23:30` `12:34` |
-| `STOPSTR`  | 24-hour formatted time OR an offset starting with plus (`+`) sign ending with unit (h or m) | `00:00` `23:30` `+3h` `+15m`           |
-| `INT`      | An integer number (no decimals allowed), can be formatted as string if needed               |
+| `STOPSTR`  | 24-hour formatted time OR an offset starting with plus (`+`) sign ending with unit (h or m) | `00:00` `23:30` `+3h` `+15m` `+127m`   |
+| `WATTAGE`  | An integer number (no decimals allowed), can be formatted as string if needed               |
 
 **Note 1:** SunnyPortal has a known bug where `00:00` as start or stop time leads to a bug. Therefor, the adapter will automatically change `00:00` into `00:15`
 
