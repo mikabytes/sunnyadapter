@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.4](https://github.com/mikabytes/sunnyadapter/compare/v0.0.3...v0.0.4) (2025-03-30)
+
+
+### Bug Fixes
+
+* attempt 3 times before failing ([e5c5cc6](https://github.com/mikabytes/sunnyadapter/commit/e5c5cc6e6d71cf6b16bdf8dc04ea5eb93007dae8))
+* NPM publish correctly ([e5c521b](https://github.com/mikabytes/sunnyadapter/commit/e5c521bccab5264e4b455e06bfdefaf50bf0002f))
+
 ## [0.0.3](https://github.com/mikabytes/sunnyadapter/compare/v0.0.2...v0.0.3) (2025-03-23)
 
 
