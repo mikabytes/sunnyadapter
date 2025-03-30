@@ -37,15 +37,31 @@ app.use((req, res, next) => {
 app.use(bodyParser.json())
 
 app.put(`/plants/:plant/battery/time-window`, async (req, res) => {
-  try {
-    await battery.setTimeWindow(req.params.plant, req.body)
-  } catch (e) {
-    res.status(400)
-    res.json({ success: false, message: e.message })
-    console.error(e)
-    return
+  let isError, errorText
+  let attempts = 0
+
+  while (attempts < 3) {
+    isError = false
+    errorText = ``
+
+    try {
+      await battery.setTimeWindow(req.params.plant, req.body)
+      isError = false
+      break
+    } catch (e) {
+      isError = true
+      attempts++
+      errorText = `${errorText}${e.message}\n\n`
+      console.error(`${new Date().toISOString()}`, e)
+    }
   }
-  res.json({ success: true })
+
+  if (isError) {
+    res.status(400)
+    res.json({ success: false, message: errorText })
+  } else {
+    res.json({ success: true })
+  }
 })
 
 app.listen(port, () => {
