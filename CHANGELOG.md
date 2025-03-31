@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.5](https://github.com/mikabytes/sunnyadapter/compare/v0.0.4...v0.0.5) (2025-03-31)
+
+
+### Features
+
+* Duplicate calls (same plant and arguments) will now be ignored. Prevents unnecessary load on sunnyportal.com ([7791395](https://github.com/mikabytes/sunnyadapter/commit/779139553bf5671eb335efb1f5ee18abc09a5bce))
+
 ## [0.0.4](https://github.com/mikabytes/sunnyadapter/compare/v0.0.3...v0.0.4) (2025-03-30)
 
 
