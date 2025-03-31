@@ -3,6 +3,7 @@ import path from "path"
 import fs from "fs/promises"
 import bodyParser from "body-parser"
 import * as battery from "./battery.js"
+import IsSame from "./IsSame.js"
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -36,7 +37,19 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json())
 
+let isSame = IsSame()
+let lastPlant
 app.put(`/plants/:plant/battery/time-window`, async (req, res) => {
+  if (isSame(req.body) && req.params.plant === lastPlant) {
+    console.log(
+      `Skipping duplicate call ${req.url} with ${JSON.stringify(req.body)}`
+    )
+    res.json({ success: true, message: "Duplicate args, no action performed" })
+    return
+  } else {
+    lastPlant = req.params.plant
+  }
+
   let isError, errorText
   let attempts = 0
 
