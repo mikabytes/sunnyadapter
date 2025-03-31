@@ -26,6 +26,7 @@ COPY ./index.js /app/
 COPY ./battery.js /app/
 COPY ./package.json /app/
 COPY ./package-lock.json /app/
+COPY ./IsSame.js /app/
 
 WORKDIR /app
 
