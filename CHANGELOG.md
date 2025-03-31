@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.6](https://github.com/mikabytes/sunnyadapter/compare/v0.0.5...v0.0.6) (2025-03-31)
+
+
+### Bug Fixes
+
+* Dockerfile was failing due to missing file ([3c5bf88](https://github.com/mikabytes/sunnyadapter/commit/3c5bf88f426fd7af57e2a59def959785f4f05e24))
+
 ## [0.0.5](https://github.com/mikabytes/sunnyadapter/compare/v0.0.4...v0.0.5) (2025-03-31)
 
 
