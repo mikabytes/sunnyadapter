@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.7](https://github.com/mikabytes/sunnyadapter/compare/v0.0.6...v0.0.7) (2025-04-06)
+
+
+### Bug Fixes
+
+* issue with page sometimes not containing an element we're using for await pageload ([4aa9aad](https://github.com/mikabytes/sunnyadapter/commit/4aa9aadaf94479ce25a2fc234b44f116d420a001))
+
 ## [0.0.6](https://github.com/mikabytes/sunnyadapter/compare/v0.0.5...v0.0.6) (2025-03-31)
 
 

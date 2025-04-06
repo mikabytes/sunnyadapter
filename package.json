@@ -1,11 +1,12 @@
 {
   "name": "sunnyadapter",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "commit-and-tag-version"
+    "release": "commit-and-tag-version",
+    "login": "node login.js"
   },
   "bin": {
     "sunnyadapter": "bin/sunnyadapter"
@@ -24,7 +25,9 @@
   "dependencies": {
     "body-parser": "^1.20.3",
     "express": "^4.21.2",
-    "puppeteer": "^24.4.0"
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^24.4.0",
+    "tough-cookie": "^5.1.2"
   },
   "type": "module",
   "devDependencies": {
