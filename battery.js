@@ -40,7 +40,8 @@ export async function setTimeWindow(plant, schedule) {
       const loginButton = form?.querySelector('button[name="login"]')
       loginButton?.click() // triggers full native JS flow including `onsubmit`
     })
-    await page.waitForSelector(`#DataTables_Table_0`)
+    await page.waitForSelector(`.user`)
+    await page.goto(`https://sunnyportal.com/Plants`)
 
     const plants = await page.evaluate(async () => {
       function get() {
@@ -76,10 +77,10 @@ export async function setTimeWindow(plant, schedule) {
     }
 
     const plantUrl = plants[plant.toLowerCase()]
+    console.log(`Going to ${plantUrl}`)
     await page.goto(plantUrl)
+    await delay(2000)
 
-    const pvSystemPropertiesSelector = `#ctl00_NavigationLeftMenuControl_3_0`
-    await page.waitForSelector(pvSystemPropertiesSelector)
     await page.goto(`https://sunnyportal.com/Templates/PlantProperties.aspx`)
     await page.waitForSelector(
       `#ctl00_ContentPlaceHolder1_LinkButtonParameter_TabFormulaConfiguration`
