@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.8](https://github.com/mikabytes/sunnyadapter/compare/v0.0.7...v0.0.8) (2025-04-10)
+
+
+### Bug Fixes
+
+* cookie consent banner is now in a shadowroot, which broke login flow ([999a1a5](https://github.com/mikabytes/sunnyadapter/commit/999a1a52adfca3cbc1aaebca82d42d782c46b67b))
+
 ## [0.0.7](https://github.com/mikabytes/sunnyadapter/compare/v0.0.6...v0.0.7) (2025-04-06)
 
 
