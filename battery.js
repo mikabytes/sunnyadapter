@@ -16,9 +16,22 @@ export async function setTimeWindow(plant, schedule) {
 
     await page.goto(`https://sunnyportal.com`)
 
-    await page.waitForSelector(`#onetrust-reject-all-handler`)
-    await page.click(`#onetrust-reject-all-handler`)
-    await delay(3000) // stupid animation thing
+    await page.evaluate(async () => {
+      let el
+      while (true) {
+        const wrap = document.querySelector(`#cmpwrapper`)
+        if (wrap) {
+          const noButton = wrap.shadowRoot.querySelector(`#cmpbntnotxt`)
+          if (noButton) {
+            noButton.click()
+            break
+          }
+        }
+
+        await new Promise((res) => setTimeout(res, 100))
+      }
+    })
+    await delay(3000)
 
     const firstLoginButton = `#ctl00_ContentPlaceHolder1_Logincontrol1_SmaIdLoginButton`
     await page.waitForSelector(firstLoginButton)
